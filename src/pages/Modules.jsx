@@ -30,14 +30,14 @@ const Modules = () => {
       <Carousel className="w-full max-w-7xl mx-auto">
         <CarouselContent className="-ml-4">
           {modules.map((module) => (
-            <CarouselItem key={module.id} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+            <CarouselItem key={module.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
                 <Card 
-                  className="cursor-pointer transition-all duration-300 ease-in-out hover:shadow-xl"
+                  className="cursor-pointer transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
                   onClick={() => navigate(`/module/${module.id}`)}
                   style={{
                     borderRadius: '16px',
-                    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
+                    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
                     transition: 'all 0.3s ease',
                   }}
                 >
