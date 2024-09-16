@@ -24,16 +24,21 @@ const Modules = () => {
         <h1 className="text-3xl font-bold mb-2">Bem-vindo ao MemberStream</h1>
         <p className="text-xl">Explore nossos módulos exclusivos e comece sua jornada de aprendizado.</p>
       </div>
-      <Carousel className="w-full max-w-5xl mx-auto">
-        <CarouselContent>
+      <Carousel className="w-full max-w-7xl mx-auto">
+        <CarouselContent className="-ml-2 md:-ml-4">
           {modules.map((module) => (
-            <CarouselItem key={module.id} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={module.id} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
               <div className="p-1">
                 <Card 
-                  className="cursor-pointer hover:shadow-lg transition-all"
+                  className="cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
                   onClick={() => navigate(`/module/${module.id}`)}
+                  style={{
+                    borderRadius: '16px',
+                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+                    transition: 'all 0.3s ease',
+                  }}
                 >
-                  <div className="relative rounded-lg overflow-hidden" style={{ aspectRatio: '720/1280' }}>
+                  <div className="relative rounded-t-lg overflow-hidden" style={{ aspectRatio: '720/1280' }}>
                     <img 
                       src={module.image} 
                       alt={module.title} 
