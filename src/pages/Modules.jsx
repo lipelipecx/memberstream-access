@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Modules = () => {
   const navigate = useNavigate();
@@ -23,43 +24,39 @@ const Modules = () => {
         <h1 className="text-3xl font-bold mb-2">Bem-vindo ao MemberStream</h1>
         <p className="text-xl">Explore nossos módulos exclusivos e comece sua jornada de aprendizado.</p>
       </div>
-      <div className="grid grid-cols-3 gap-6">
-        {modules.map((module) => (
-          <Card 
-            key={module.id} 
-            className="cursor-pointer hover:shadow-lg transition-all transform hover:scale-105"
-            onClick={() => navigate(`/module/${module.id}`)}
-            style={{
-              aspectRatio: '720 / 1280',
-              perspective: '1000px',
-              transformStyle: 'preserve-3d',
-            }}
-          >
-            <div 
-              className="w-full h-full relative rounded-lg overflow-hidden"
-              style={{
-                transform: 'rotateY(5deg) rotateX(5deg)',
-                transition: 'transform 0.3s ease',
-              }}
-            >
-              <img 
-                src={module.image} 
-                alt={module.title} 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                <CardHeader className="text-white">
-                  <CardTitle className="text-2xl">{module.title}</CardTitle>
-                  <CardDescription className="text-gray-200">{module.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-white">Clique para ver as aulas</p>
-                </CardContent>
+      <Carousel className="w-full max-w-5xl mx-auto">
+        <CarouselContent>
+          {modules.map((module) => (
+            <CarouselItem key={module.id} className="md:basis-1/2 lg:basis-1/3">
+              <div className="p-1">
+                <Card 
+                  className="cursor-pointer hover:shadow-lg transition-all"
+                  onClick={() => navigate(`/module/${module.id}`)}
+                >
+                  <div className="relative rounded-lg overflow-hidden" style={{ aspectRatio: '720/1280' }}>
+                    <img 
+                      src={module.image} 
+                      alt={module.title} 
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                      <CardHeader className="text-white">
+                        <CardTitle className="text-2xl">{module.title}</CardTitle>
+                        <CardDescription className="text-gray-200">{module.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-white">Clique para ver as aulas</p>
+                      </CardContent>
+                    </div>
+                  </div>
+                </Card>
               </div>
-            </div>
-          </Card>
-        ))}
-      </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 };
