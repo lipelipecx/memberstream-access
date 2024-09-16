@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Modules = () => {
   const navigate = useNavigate();
@@ -12,10 +12,17 @@ const Modules = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Módulos do Curso</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="bg-primary text-primary-foreground p-8 rounded-lg mb-8">
+        <h1 className="text-3xl font-bold mb-2">Bem-vindo ao MemberStream</h1>
+        <p className="text-xl">Explore nossos módulos exclusivos e comece sua jornada de aprendizado.</p>
+      </div>
+      <div className="space-y-6">
         {modules.map((module) => (
-          <Card key={module.id} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate(`/module/${module.id}`)}>
+          <Card 
+            key={module.id} 
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => navigate(`/module/${module.id}`)}
+          >
             <CardHeader>
               <CardTitle>{module.title}</CardTitle>
               <CardDescription>{module.description}</CardDescription>
